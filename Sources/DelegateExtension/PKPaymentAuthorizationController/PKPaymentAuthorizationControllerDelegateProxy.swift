@@ -67,7 +67,9 @@ final class PKPaymentAuthorizationControllerDelegateProxy: DelegateProxy<PKPayme
 
   public let didSelectShippingMethodRelay = PassthroughSubject<DidSelectShippingMethodRelayParam, Never>()
   public let didSelectShippingContactRelay = PassthroughSubject<DidSelectShippingContactRelayParam, Never>()
-  public let didSelectPaymentMethodRelay = PassthroughSubject<DidSelectPaymentMethodRelayParam, Never>()
+
+  // Disable it to since the delegate will receive no further callbacks except paymentAuthorizationControllerDidFinish
+//  public let didSelectPaymentMethodRelay = PassthroughSubject<DidSelectPaymentMethodRelayParam, Never>()
 }
 
 extension PKPaymentAuthorizationControllerDelegateProxy: PKPaymentAuthorizationControllerDelegate {
@@ -135,16 +137,16 @@ extension PKPaymentAuthorizationControllerDelegateProxy: PKPaymentAuthorizationC
     }
   }
 
-  // Sent when the user has selected a new payment card.  Use this delegate callback if you need to
+  // Sent when the user has selected a new payment card. Use this delegate callback if you need to
   // update the summary items in response to the card type changing (for example, applying credit card surcharges)
   //
   // The delegate will receive no further callbacks except paymentAuthorizationControllerDidFinish:
   // until it has invoked the completion block.
-  @MainActor func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didSelectPaymentMethod paymentMethod: PKPaymentMethod, handler completion: @escaping (PKPaymentRequestPaymentMethodUpdate) -> Void) {
-    didSelectPaymentMethodRelay.send((paymentMethod, completion))
-
-    if #available(iOS 14.0, *) {
-      forwardToDelegate?.paymentAuthorizationController?(controller, didSelectPaymentMethod: paymentMethod, handler: completion)
-    }
-  }
+//  @MainActor func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didSelectPaymentMethod paymentMethod: PKPaymentMethod, handler completion: @escaping (PKPaymentRequestPaymentMethodUpdate) -> Void) {
+//    didSelectPaymentMethodRelay.send((paymentMethod, completion))
+//
+//    if #available(iOS 14.0, *) {
+//      forwardToDelegate?.paymentAuthorizationController?(controller, didSelectPaymentMethod: paymentMethod, handler: completion)
+//    }
+//  }
 }

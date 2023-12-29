@@ -70,11 +70,11 @@ extension Delegable where Base: PKPaymentAuthorizationController {
       .eraseToAnyPublisher()
   }
 
-  public var didSelectPaymentMethodRelay: AnyPublisher<DidSelectPaymentMethodRelayParam, Never> {
-    PKPaymentAuthorizationControllerDelegateProxy.proxy(for: wrappedValue)
-      .didSelectPaymentMethodRelay
-      .eraseToAnyPublisher()
-  }
+//  public var didSelectPaymentMethodRelay: AnyPublisher<DidSelectPaymentMethodRelayParam, Never> {
+//    PKPaymentAuthorizationControllerDelegateProxy.proxy(for: wrappedValue)
+//      .didSelectPaymentMethodRelay
+//      .eraseToAnyPublisher()
+//  }
 }
 
 extension PKPaymentAuthorizationController: DelegableCompatible {}

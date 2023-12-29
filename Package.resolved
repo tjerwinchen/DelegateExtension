@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tjerwinchen/DelegateFoundation",
       "state" : {
-        "branch" : "main",
-        "revision" : "02ed9a93f547f73477c85ac179b1f5331ae21d46"
+        "revision" : "7ff66dc1ca188c37195653064f157ae337733241",
+        "version" : "0.0.2"
       }
     }
   ],
